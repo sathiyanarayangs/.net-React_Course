@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.47% </span>
+                <span class="strong">80.95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/19</span>
+                <span class='fraction'>17/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/6</span>
+                <span class='fraction'>5/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.44% </span>
+                <span class="strong">89.47% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/18</span>
+                <span class='fraction'>17/19</span>
             </div>
         
             
@@ -122,7 +122,18 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -160,11 +171,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -214,28 +236,39 @@ const StudentsPage = () =&gt; {
   const role = localStorage.getItem('role');
 &nbsp;
   return (
-    &lt;div className="students-page"&gt;
-      &lt;header&gt;
+    &lt;&gt;
+      &lt;header className="dashboard-header"&gt;
         &lt;h1&gt;Student Portal&lt;/h1&gt;
+        &lt;div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}&gt;
+          &lt;span className="badge"&gt;Role: {role || <span class="branch-1 cbranch-no" title="branch not covered" >'Student'}&lt;/span&gt;</span>
+          &lt;button className="danger" <span class="fstat-no" title="function not covered" >onClick={() =&gt; {</span> <span class="cstat-no" title="statement not covered" >localStorage.clear(); <span class="cstat-no" title="statement not covered" >w</span>indow.location.href = '/login'; }</span>}&gt;Logout&lt;/button&gt;
+        &lt;/div&gt;
       &lt;/header&gt;
-      &lt;div className="search-container"&gt;
-        &lt;input
-          type="text"
-          placeholder="Search students..."
-          value={searchTerm}
-          onChange={(e) =&gt; setSearchTerm(e.target.value)}
-        /&gt;
-        &lt;span className="match-count"&gt;{filteredStudents.length} matches&lt;/span&gt;
+&nbsp;
+      &lt;div className="dashboard-content"&gt;
+        &lt;div className="search-bar" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}&gt;
+          &lt;input
+            type="text"
+            placeholder="Search students by name or email..."
+            value={searchTerm}
+            onChange={(e) =&gt; setSearchTerm(e.target.value)}
+          /&gt;
+          &lt;span style={{ color: 'var(--text-muted)', fontSize: '0.875rem', whiteSpace: 'nowrap' }}&gt;
+            {filteredStudents.length} matches
+          &lt;/span&gt;
+        &lt;/div&gt;
+        
+        &lt;div className="glass-panel table-container"&gt;
+          {loading ? (
+            &lt;div style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}&gt;Loading students...&lt;/div&gt;
+          ) : filteredStudents.length === 0 ? (
+            &lt;div style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}&gt;No students found&lt;/div&gt;
+          ) : (
+            &lt;StudentList students={filteredStudents} role={role} /&gt;
+          )}
+        &lt;/div&gt;
       &lt;/div&gt;
-      
-      {loading ? (
-        &lt;div className="loading"&gt;Loading students...&lt;/div&gt;
-      ) : filteredStudents.length === 0 ? (
-        &lt;div className="empty-state"&gt;No students found&lt;/div&gt;
-      ) : (
-        &lt;StudentList students={filteredStudents} role={role} /&gt;
-      )}
-    &lt;/div&gt;
+    &lt;/&gt;
   );
 };
 &nbsp;
@@ -247,7 +280,7 @@ export default StudentsPage;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-25T09:42:39.913Z
+                at 2026-09-25T15:27:33.208Z
             </div>
         <script src="../prettify.js"></script>
         <script>

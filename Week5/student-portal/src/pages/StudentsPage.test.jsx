@@ -38,7 +38,7 @@ describe('StudentsPage', () => {
       expect(screen.getByText('Alice')).toBeInTheDocument();
     });
 
-    const searchInput = screen.getByPlaceholderText('Search students...');
+    const searchInput = screen.getByPlaceholderText('Search students by name or email...');
     fireEvent.change(searchInput, { target: { value: 'Ali' } });
     
     expect(screen.getByText('Alice')).toBeInTheDocument();
@@ -52,7 +52,7 @@ describe('StudentsPage', () => {
       expect(screen.getByText('Alice')).toBeInTheDocument();
     });
 
-    const searchInput = screen.getByPlaceholderText('Search students...');
+    const searchInput = screen.getByPlaceholderText('Search students by name or email...');
     fireEvent.change(searchInput, { target: { value: 'Zebra' } });
     
     expect(screen.getByText('No students found')).toBeInTheDocument();

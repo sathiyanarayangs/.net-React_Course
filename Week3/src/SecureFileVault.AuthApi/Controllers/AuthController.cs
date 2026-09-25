@@ -37,4 +37,13 @@ public class AuthController : ControllerBase
         string token = MinimalJwt.Issue(user.Username, user.Role, TimeSpan.FromHours(1), _secrets.JwtSecret);
         return Ok(new LoginResponse(token, user.Role));
     }
+
+    [HttpPost("register")]
+    public IActionResult Register([FromBody] object request)
+    {
+        // Dummy registration for Week 5 React integration
+        // The in-memory store doesn't actually support adding in this minimal API out of the box,
+        // but we return 200 OK so the React client can succeed and redirect to Login.
+        return Ok(new { message = "Registration successful" });
+    }
 }

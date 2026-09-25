@@ -31,28 +31,39 @@ const StudentsPage = () => {
   const role = localStorage.getItem('role');
 
   return (
-    <div className="students-page">
-      <header>
+    <>
+      <header className="dashboard-header">
         <h1>Student Portal</h1>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <span className="badge">Role: {role || 'Student'}</span>
+          <button className="danger" onClick={() => { localStorage.clear(); window.location.href = '/login'; }}>Logout</button>
+        </div>
       </header>
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Search students..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <span className="match-count">{filteredStudents.length} matches</span>
+
+      <div className="dashboard-content">
+        <div className="search-bar" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <input
+            type="text"
+            placeholder="Search students by name or email..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <span style={{ color: 'var(--text-muted)', fontSize: '0.875rem', whiteSpace: 'nowrap' }}>
+            {filteredStudents.length} matches
+          </span>
+        </div>
+        
+        <div className="glass-panel table-container">
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}>Loading students...</div>
+          ) : filteredStudents.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}>No students found</div>
+          ) : (
+            <StudentList students={filteredStudents} role={role} />
+          )}
+        </div>
       </div>
-      
-      {loading ? (
-        <div className="loading">Loading students...</div>
-      ) : filteredStudents.length === 0 ? (
-        <div className="empty-state">No students found</div>
-      ) : (
-        <StudentList students={filteredStudents} role={role} />
-      )}
-    </div>
+    </>
   );
 };
 

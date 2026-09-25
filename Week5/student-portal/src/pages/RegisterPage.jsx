@@ -35,30 +35,30 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="auth-page">
-      <h2>Register</h2>
+    <div className="auth-container glass-panel">
+      <h2>Create an Account</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
           <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
         </div>
-        <div>
-          <label htmlFor="dob">DOB:</label>
+        <div className="form-group">
+          <label htmlFor="dob">Date of Birth</label>
           <input type="date" id="dob" name="dob" value={formData.dob} onChange={handleChange} required />
         </div>
-        <div>
-          <label htmlFor="designation">Designation:</label>
-          <input type="text" id="designation" name="designation" value={formData.designation} onChange={handleChange} required />
+        <div className="form-group">
+          <label htmlFor="designation">Designation</label>
+          <input type="text" id="designation" name="designation" value={formData.designation} onChange={handleChange} required placeholder="e.g. Student" />
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required placeholder="you@example.com" />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
+        <div className="form-group">
+          <label htmlFor="password">Password (Min 6 chars)</label>
+          <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required placeholder="••••••••" />
         </div>
-        <button type="submit" disabled={!isValid}>Register</button>
+        <button type="submit" disabled={!isValid} style={{ width: '100%', marginTop: '1rem' }}>Register</button>
       </form>
     </div>
   );

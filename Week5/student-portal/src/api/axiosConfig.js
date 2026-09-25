@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // Adjust base URL as needed
+  baseURL: 'http://localhost:5237/api', // Points to Week 3 Auth API
 });
 
 api.interceptors.request.use((config) => {

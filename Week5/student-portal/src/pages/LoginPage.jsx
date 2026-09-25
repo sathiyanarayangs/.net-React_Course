@@ -6,7 +6,7 @@ import { parseJwt } from '../utils/jwt';
 const LoginPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: '',
   });
   const [error, setError] = useState('');
@@ -38,22 +38,22 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="auth-page">
-      <h2>Login</h2>
-      {error && <p className="error">{error}</p>}
+    <div className="auth-container glass-panel">
+      <h2>Welcome Back</h2>
+      {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+        <div className="form-group">
+          <label htmlFor="username">Username</label>
+          <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required placeholder="e.g. alice.teacher" />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required placeholder="••••••••" />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" style={{ width: '100%' }}>Login</button>
       </form>
-      <p>
-        Don't have an account? <Link to="/register">Register</Link>
+      <p style={{ marginTop: '1.5rem', fontSize: '0.875rem', color: 'var(--text-muted)' }}>
+        Don't have an account? <Link to="/register">Register here</Link>
       </p>
     </div>
   );

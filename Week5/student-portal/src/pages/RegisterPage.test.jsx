@@ -17,7 +17,7 @@ describe('RegisterPage', () => {
     expect(submitBtn).toBeDisabled();
 
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'John' } });
-    fireEvent.change(screen.getByLabelText(/dob/i), { target: { value: '2000-01-01' } });
+    fireEvent.change(screen.getByLabelText(/date of birth/i), { target: { value: '2000-01-01' } });
     fireEvent.change(screen.getByLabelText(/designation/i), { target: { value: 'Student' } });
     fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'john@example.com' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'short' } });
@@ -36,7 +36,7 @@ describe('RegisterPage', () => {
     renderWithRouter(<RegisterPage />);
     
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'John' } });
-    fireEvent.change(screen.getByLabelText(/dob/i), { target: { value: '2000-01-01' } });
+    fireEvent.change(screen.getByLabelText(/date of birth/i), { target: { value: '2000-01-01' } });
     fireEvent.change(screen.getByLabelText(/designation/i), { target: { value: 'Student' } });
     fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'john@example.com' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'password123' } });
@@ -61,7 +61,7 @@ describe('RegisterPage', () => {
     renderWithRouter(<RegisterPage />);
     
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'John' } });
-    fireEvent.change(screen.getByLabelText(/dob/i), { target: { value: '2000-01-01' } });
+    fireEvent.change(screen.getByLabelText(/date of birth/i), { target: { value: '2000-01-01' } });
     fireEvent.change(screen.getByLabelText(/designation/i), { target: { value: 'Student' } });
     fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'john@example.com' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'password123' } });

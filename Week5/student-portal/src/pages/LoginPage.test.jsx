@@ -26,14 +26,14 @@ describe('LoginPage', () => {
 
     renderWithRouter(<LoginPage />);
 
-    fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'teacher@example.com' } });
+    fireEvent.change(screen.getByLabelText(/username/i), { target: { value: 'teacher' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'password123' } });
     
     fireEvent.click(screen.getByRole('button', { name: /login/i }));
 
     await waitFor(() => {
       expect(api.post).toHaveBeenCalledWith('/auth/login', {
-        email: 'teacher@example.com',
+        username: 'teacher',
         password: 'password123'
       });
     });
@@ -46,7 +46,7 @@ describe('LoginPage', () => {
 
     renderWithRouter(<LoginPage />);
 
-    fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'bad@example.com' } });
+    fireEvent.change(screen.getByLabelText(/username/i), { target: { value: 'bad' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'wrong' } });
     
     fireEvent.click(screen.getByRole('button', { name: /login/i }));
@@ -64,7 +64,7 @@ describe('LoginPage', () => {
 
     renderWithRouter(<LoginPage />);
 
-    fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'student@example.com' } });
+    fireEvent.change(screen.getByLabelText(/username/i), { target: { value: 'student' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'password123' } });
     
     fireEvent.click(screen.getByRole('button', { name: /login/i }));
