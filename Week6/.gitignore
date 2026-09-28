@@ -1,0 +1,12 @@
+bin/
+obj/
+TestResults/
+coverage-report/
+*.user
+.vs/
+*.db
+*.db-shm
+*.db-wal
+node_modules/
+dist/
+coverage/
