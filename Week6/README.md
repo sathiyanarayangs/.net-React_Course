@@ -1,4 +1,4 @@
-# Week 4 — Database Access (ADO.NET, EF Code First, EF DB First)
+# Database Access (ADO.NET, EF Code First, EF DB First)
 
 The same `IRepository<Student>` seam implemented three ways, swappable by
 one config value, plus the Week 3 login user moved from an in-memory
